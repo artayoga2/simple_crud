@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="contactus_tee" model="ir.ui.view">
+        <field name="name">contact.us.tree</field>
+        <field name="model">contact.us</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="message"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="contactus_form" model="ir.ui.view">
+        <field name="name">contact.us.form</field>
+        <field name="model">contact.us</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="message"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="contactus_action" model="ir.actions.act_window">
+        <field name="name">contactus</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">contact.us</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new contact us!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="contact_us_root" 
+        name="Contact Us"
+        sequence="10"/>
+    <menuitem id="contact_us_menu_root" 
+        name="Contact Us Menu"
+        parent="contact_us_root"
+        sequence="10"/>
+    <menuitem id="contact_us_submenu_root" 
+        name="Contact Us Menu"
+        parent="contact_us_menu_root"
+        action="contactus_action"
+        sequence="10"/>
+</odoo>
